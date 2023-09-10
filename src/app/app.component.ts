@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'foodOrderApp';
+  public feature:string ='recipe'
+
+  /* public onPassedFeature(feature:string){
+    this.feature = feature;
+  } */
 }
