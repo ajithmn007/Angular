@@ -11,9 +11,9 @@ export class DropDownDirective implements OnInit{
         
     }
     constructor(private elementRef: ElementRef, private renderer: Renderer2){ }
-    /* @HostBinding('class.open') isOpen: boolean = false; */
+    @HostBinding('class.open') isOpen: boolean = false;
 
     @HostListener('click') toggleOpen(eventData: Event){
-        this.renderer.setStyle(this.elementRef.nativeElement, 'class', 'open')
+        this.isOpen = !this.isOpen
     }
 }

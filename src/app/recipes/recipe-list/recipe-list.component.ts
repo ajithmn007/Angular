@@ -1,17 +1,19 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { NgOptimizedImage } from '@angular/common';
+import { RecipeService } from '../recipe.service';
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent {
-  recipes: Recipe[]=[
-    new Recipe('Test recipe', 'Test desc', 'https://www.wholesomeyum.com/wp-content/uploads/2022/04/wholesomeyum-Sirloin-Steak-Recipe-8.jpg')
-  ]
+export class RecipeListComponent implements OnInit {
+  recipes: Recipe[];
   @Output() recipeSelected = new EventEmitter<Recipe>();
 
-  public onRecipeSeelcted(recipe:Recipe){
-    this.recipeSelected.emit(recipe);
+  constructor(private _recipeService: RecipeService){}
+
+ public ngOnInit(): void {
+    this.recipes = this._recipeService.getRecipes();
   }
 }
